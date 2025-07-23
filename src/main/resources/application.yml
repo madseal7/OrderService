@@ -4,3 +4,20 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  cloud:
+    vault:
+      uri: http://77.221.140.212:8201/
+      connection-timeout: 5000
+      read-timeout: 15000
+      authentication: TOKEN
+      token: hvs.CAESIL3o6kErafZ40oeDctIC4zrv0WGNes5BetDbEx5aqVH4Gh4KHGh2cy5Za1I3NzRrYllJeUs2bFMyakthWEVMeUQ
+      kv:
+        application-name: database
+        enabled: true
+        backend: secret
+        profile-separator: '/'
+        default-context: database
+
+  config:
+    import: vault://
